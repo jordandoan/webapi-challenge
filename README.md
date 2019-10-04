@@ -24,15 +24,16 @@ In this challenge, create a web API around the following resources: `Projects` a
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Mention two parts of Express that you learned about this week.
-
-- [ ] Describe Middleware?
-
-- [ ] Describe a Resource?
-
-- [ ] What can the API return to help clients know if a request was successful?
-
+- [ ] Mention two parts of Express that you learned about this week.  
+- I learned about middleware to perform specific actions and .dotenv to protect your server, and also allow your server to be deployed dynamically.    
+- [ ] Describe Middleware?  
+- Middleware are helper functions that can be executed before and after going to an endpoint. For example, there is authentication and authorization middleware, which allows users to log in and also determines whether or not the user can view resources from an endpoint.  
+- [ ] Describe a Resource?  
+- A resource is usually an object of data, which can be accessible from an endpoint and can be edited through CRUD (create, update, update, delete).
+- [ ] What can the API return to help clients know if a request was successful?  
+- A status code, 200 or 201.
 - [ ] How can we partition our application into sub-applications?
+- Using the Router function bundled with Express, which help can create different endpoint easier.  
 
 ## Project Setup
 
