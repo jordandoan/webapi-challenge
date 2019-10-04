@@ -15,12 +15,14 @@ Go code!
 const express = require("express");
 
 const projectRoutes = require("./routes/projectRoutes");
+const actionRoutes = require("./routes/actionRoutes");
 
 const server = express();
 server.use(express.json());
 const port = 5000;
 
 server.use("/api/projects", projectRoutes);
+server.use("/api/actions", actionRoutes);
 server.listen(port, () => {
   console.log("Server is online");
 });
