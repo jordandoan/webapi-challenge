@@ -5,31 +5,37 @@ router.use(express.json());
 
 router.get("/", (req,res) => {
   projectDB.get()
-    .then(projects => res.status(200).json(projects));
+    .then(projects => res.status(200).json(projects))
+    .catch(res.status(500).json({message:"Error retrieving information from the database"}));
 });
 
 router.get("/:id", validateProjectId, (req,res) => {
   res.status(200).json(req.project);
+  
 });
 
 router.get("/:id/actions", validateProjectId, (req,res) => {
   projectDB.getProjectActions(req.params.id)
-    .then(actions => res.status(200).json(actions));
+    .then(actions => res.status(200).json(actions))
+    .catch(res.status(500).json({message:"Error retrieving information from the database"}));
 })
 
 router.post("/", validateProject, (req,res) => {
   projectDB.insert(req.project)
-    .then(id => res.status(201).json({...id, ...req.project}));
+    .then(id => res.status(201).json({...id, ...req.project}))
+    .catch(res.status(500).json({message:"Error saving to the database"}));
 });
 
 router.put("/:id", [validateProjectId, validateProject], (req,res) => {
   projectDB.update(req.params.id, req.project)
-    .then(updatedProject => res.status(201).json(updatedProject));
+    .then(updatedProject => res.status(201).json(updatedProject))
+    .catch(res.status(500).json({message:"Error updating the database"}));
 });
 
 router.delete("/:id", [validateProjectId], (req,res) => {
   projectDB.remove(req.params.id)
-    .then(count => res.status(201).json({records_deleted: count}));
+    .then(count => res.status(201).json({records_deleted: count}))
+    .catch(res.status(500).json({message:"Error deleting from database"}));
 });
 
 function validateProject(req,res,next) {
@@ -54,6 +60,7 @@ function validateProjectId(req,res,next) {
         res.status(404).json({message: "Could not find project with specified id"});
       }
     })
+    .catch(res.status(500).json({message:"Error retrieving information from the database"}));
 };
 
 module.exports = router;

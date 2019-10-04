@@ -23,6 +23,11 @@ const port = 5000;
 
 server.use("/api/projects", projectRoutes);
 server.use("/api/actions", actionRoutes);
+
+server.get("/", (req,res) => {
+  res.send("Please go to /api/projects or /api/actions");
+})
+
 server.listen(port, () => {
   console.log("Server is online");
 });
