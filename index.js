@@ -12,3 +12,12 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+const express = require("express");
+
+const server = express();
+server.use(express.json());
+const port = 5000;
+
+server.listen(port, () => {
+  console.log("Server is online");
+});
