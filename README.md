@@ -33,7 +33,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [ ] What can the API return to help clients know if a request was successful?  
 - A status code, 200 or 201.
 - [ ] How can we partition our application into sub-applications?
-- Using the Router function bundled with Express, which help can create different endpoint easier.  
+- Using the Router function bundled with Express, which can help create different endpoints easier.  
 
 ## Project Setup
 
