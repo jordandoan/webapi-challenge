@@ -22,6 +22,16 @@ router.post("/", validateProject, (req,res) => {
     .then(id => res.status(201).json({...id, ...req.project}));
 });
 
+router.put("/:id", [validateProjectId, validateProject], (req,res) => {
+  projectDB.update(req.params.id, req.project)
+    .then(updatedProject => res.status(201).json(updatedProject));
+});
+
+router.delete("/:id", [validateProjectId], (req,res) => {
+  projectDB.remove(req.params.id)
+    .then(count => res.status(201).json({records_deleted: count}));
+});
+
 function validateProject(req,res,next) {
   if (!req.body) {
     res.status(404).json({message: "Required body is missing"})
